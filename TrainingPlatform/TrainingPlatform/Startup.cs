@@ -1,7 +1,9 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +13,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TrainingPlatform.ApplicationServices.API.Domain;
+using TrainingPlatform.ApplicationServices.Mappings;
+using TrainingPlatform.DataAccess;
 
 namespace TrainingPlatform
 {
@@ -26,6 +31,13 @@ namespace TrainingPlatform
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IQueryExecutor, QueryExecutor>();
+            services.AddAutoMapper(typeof(PlansProfile).Assembly);
+            services.AddMediatR(typeof(ResponseBase<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+            services.AddDbContext<TrainingPlatformContext>(
+                opt => opt.UseSqlServer(this.Configuration.GetConnectionString("TrainingPlatformConnection")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
