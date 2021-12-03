@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using TrainingPlatform.ApplicationServices.API.Domain;
 using TrainingPlatform.ApplicationServices.Mappings;
 using TrainingPlatform.DataAccess;
+using TrainingPlatform.DataAccess.CQRS;
 
 namespace TrainingPlatform
 {
@@ -31,6 +32,8 @@ namespace TrainingPlatform
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ICommandExecutor, CommandExecutor>();
+
             services.AddTransient<IQueryExecutor, QueryExecutor>();
             services.AddAutoMapper(typeof(PlansProfile).Assembly);
             services.AddMediatR(typeof(ResponseBase<>));

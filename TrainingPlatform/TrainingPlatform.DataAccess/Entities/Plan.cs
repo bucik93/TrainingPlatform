@@ -10,6 +10,7 @@ namespace TrainingPlatform.DataAccess.Entities
     {
         public string Name { get; set; }
         public List<User> Users { get; set; }
+        public int ExerciseId { get; set; }
 
     }
 }

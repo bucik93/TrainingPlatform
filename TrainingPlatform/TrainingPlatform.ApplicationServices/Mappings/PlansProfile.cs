@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TrainingPlatform.ApplicationServices.API.Domain.Models;
+using TrainingPlatform.ApplicationServices.API.Domain;
+using TrainingPlatform.DataAccess.Entities;
 
 namespace TrainingPlatform.ApplicationServices.Mappings
 {
@@ -12,7 +13,10 @@ namespace TrainingPlatform.ApplicationServices.Mappings
     {
         public PlansProfile()
         {
-            this.CreateMap<TrainingPlatform.DataAccess.Entities.Plan, Plan>()
+            this.CreateMap<AddPlanRequest, Plan>()
+                .ForMember(x => x.Name, y => y.MapFrom(z => z.Name)); 
+
+            this.CreateMap<Plan, API.Domain.Models.Plan>()
                 .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name));
 
