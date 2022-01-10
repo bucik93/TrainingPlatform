@@ -37,6 +37,15 @@ namespace TrainingPlatform.Controllers
             return this.Ok(response);
         }
 
+        [HttpDelete]
+        [Route("{planId:int}")]
+        public async Task<IActionResult> Remove([FromRoute] int planId)
+        {
+            var request = new RemovePlanRequest() { PlanId = planId };
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+
         [HttpPut]
         [Route("")]
         public async Task<IActionResult> UpdatePlan([FromQuery] UpdatePlanRequest request)
