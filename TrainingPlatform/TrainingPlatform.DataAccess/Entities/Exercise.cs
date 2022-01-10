@@ -17,7 +17,7 @@ namespace TrainingPlatform.DataAccess.Entities
         public int Series { get; set; }
         public int Repeat { get; set; }
         public int Weight { get; set; }
-
+        public List<Plan> Plans { get; set; }
     }
 }
 

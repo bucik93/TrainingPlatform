@@ -1,0 +1,21 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TrainingPlatform.DataAccess.Entities;
+
+namespace TrainingPlatform.DataAccess.CQRS.Queries
+{
+    public class GetExercisesByPlan:QueryBase<Plan>
+    {
+        public int Id { get; set; }
+        public override async Task<Plan> Execute(TrainingPlatformContext context)
+        {
+            var plan = await context.Plans.AsNoTracking().FirstOrDefaultAsync(x => x.Id == this.Id);
+            //var exercises = await context.Plans.Include(x => x.ExerciseId == plan.Id);
+            return plan;
+        }
+    }
+}
