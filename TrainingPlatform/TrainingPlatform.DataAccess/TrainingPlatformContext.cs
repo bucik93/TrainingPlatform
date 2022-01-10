@@ -14,9 +14,7 @@ namespace TrainingPlatform.DataAccess
         {
 
         }
-        public DbSet<ContentFile> ContentFiles { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
-        public DbSet<File> Files { get; set; }
         public DbSet<Plan> Plans { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
