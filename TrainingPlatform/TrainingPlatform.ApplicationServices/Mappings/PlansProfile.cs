@@ -17,7 +17,7 @@ namespace TrainingPlatform.ApplicationServices.Mappings
                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name));
 
             this.CreateMap<UpdatePlanRequest, Plan>()
-                .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.PlanId))
                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name));
 
             this.CreateMap<RemovePlanRequest, Plan>()

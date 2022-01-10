@@ -29,7 +29,7 @@ namespace TrainingPlatform.Controllers
         }
 
         [HttpGet]
-        [Route("{planId:int}")]
+        [Route("{planId}")]
         public async Task<IActionResult> GetById([FromRoute] int planId)
         {
             var request = new GetPlanByIdRequest() { PlanId = planId };
@@ -38,18 +38,19 @@ namespace TrainingPlatform.Controllers
         }
 
         [HttpDelete]
-        [Route("{planId:int}")]
+        [Route("{planId}")]
         public async Task<IActionResult> Remove([FromRoute] int planId)
         {
             var request = new RemovePlanRequest() { PlanId = planId };
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
-
+        
         [HttpPut]
-        [Route("{planId:int}")]
-        public async Task<IActionResult> UpdatePlan([FromQuery] UpdatePlanRequest request)
+        [Route("{planId}")]
+        public async Task<IActionResult> UpdatePlan([FromRoute] int planId,[FromQuery] UpdatePlanRequest request)
         {
+            request.PlanId = planId;
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }

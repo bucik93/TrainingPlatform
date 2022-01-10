@@ -9,7 +9,7 @@ namespace TrainingPlatform.ApplicationServices.API.Domain
 {
     public class UpdatePlanRequest : IRequest<UpdatePlanResponse>
     {
-        public int Id { get; set; }
+        public int PlanId;
         public string Name { get; set; }
     }
 }

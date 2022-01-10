@@ -30,7 +30,7 @@ namespace TrainingPlatform.ApplicationServices.API.Handlers
         {
             var query = new GetPlanQuery()
             {
-                Id = request.Id
+                Id = request.PlanId
             };
 
             var planToUpdate = await this.queryExecutor.Execute(query);
