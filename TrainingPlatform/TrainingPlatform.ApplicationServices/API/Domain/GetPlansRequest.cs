@@ -9,5 +9,6 @@ namespace TrainingPlatform.ApplicationServices.API.Domain
 {
     public class GetPlansRequest : IRequest<GetPlansResponse>
     {
+        public string Name { get; set; }
     }
 }

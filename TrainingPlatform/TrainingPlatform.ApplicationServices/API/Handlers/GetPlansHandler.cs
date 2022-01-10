@@ -26,7 +26,7 @@ namespace TrainingPlatform.ApplicationServices.API.Handlers
         }
         public async Task<GetPlansResponse> Handle(GetPlansRequest request, CancellationToken cancellationToken)
         {
-            var query = new GetPlansQuery();
+            var query = new GetPlansQuery(){ Name = request.Name };
             var plans = await this.queryExecutor.Execute(query);
             var mappedPlan = this.mapper.Map<List<Domain.Models.Plan>>(plans);
             var response = new GetPlansResponse() { Data = mappedPlan };

@@ -10,9 +10,10 @@ namespace TrainingPlatform.DataAccess.CQRS.Queries
 {
     public class GetPlansQuery : QueryBase<List<Plan>>
     {
+        public string Name { get; set; }
         public override Task<List<Plan>> Execute(TrainingPlatformContext context)
-        {
-            return context.Plans.ToListAsync();
+        {               
+            return Name != null ? context.Plans.Where(x => x.Name == this.Name).ToListAsync() :  context.Plans.ToListAsync();
         }
     }
 }
