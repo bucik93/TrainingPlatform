@@ -47,9 +47,9 @@ namespace TrainingPlatform.Controllers
         }
 
         [HttpPut]
-        [Route("")]
+        [Route("{planId:int}")]
         public async Task<IActionResult> UpdatePlan([FromQuery] UpdatePlanRequest request)
-        {           
+        {
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
