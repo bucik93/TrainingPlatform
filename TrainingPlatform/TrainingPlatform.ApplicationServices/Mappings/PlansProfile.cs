@@ -14,7 +14,11 @@ namespace TrainingPlatform.ApplicationServices.Mappings
         public PlansProfile()
         {
             this.CreateMap<AddPlanRequest, Plan>()
-                .ForMember(x => x.Name, y => y.MapFrom(z => z.Name)); 
+                .ForMember(x => x.Name, y => y.MapFrom(z => z.Name));
+
+            this.CreateMap<UpdatePlanRequest, Plan>()
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+                .ForMember(x => x.Name, y => y.MapFrom(z => z.Name));
 
             this.CreateMap<Plan, API.Domain.Models.Plan>()
                 .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
