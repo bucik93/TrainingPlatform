@@ -26,7 +26,16 @@ namespace TrainingPlatform.Controllers
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);
-        }   
+        }
+
+        [HttpGet]
+        [Route("{planId:int}")]
+        public async Task<IActionResult> GetById([FromRoute] int planId)
+        {
+            var request = new GetPlanByIdRequest() { PlanId = planId };
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
 
         [HttpPost]
         [Route("")]

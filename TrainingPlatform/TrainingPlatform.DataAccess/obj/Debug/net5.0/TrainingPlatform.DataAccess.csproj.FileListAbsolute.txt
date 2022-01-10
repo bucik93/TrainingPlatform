@@ -12,4 +12,3 @@ F:\TrainingPlatform REPO GITHUB\TrainingPlatform\TrainingPlatform\TrainingPlatfo
 F:\TrainingPlatform REPO GITHUB\TrainingPlatform\TrainingPlatform\TrainingPlatform.DataAccess\obj\Debug\net5.0\ref\TrainingPlatform.DataAccess.dll
 F:\TrainingPlatform REPO GITHUB\TrainingPlatform\TrainingPlatform\TrainingPlatform.DataAccess\obj\Debug\net5.0\TrainingPlatform.DataAccess.pdb
 F:\TrainingPlatform REPO GITHUB\TrainingPlatform\TrainingPlatform\TrainingPlatform.DataAccess\obj\Debug\net5.0\TrainingPlatform.DataAccess.genruntimeconfig.cache
-F:\TrainingPlatform REPO GITHUB\TrainingPlatform\TrainingPlatform\TrainingPlatform.DataAccess\obj\Debug\net5.0\TrainingPlatform.DataAccess.csproj.AssemblyReference.cache
