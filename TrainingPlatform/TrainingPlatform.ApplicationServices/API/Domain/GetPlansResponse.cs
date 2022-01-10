@@ -7,7 +7,7 @@ using TrainingPlatform.ApplicationServices.API.Domain.Models;
 
 namespace TrainingPlatform.ApplicationServices.API.Domain
 {
-    public class GetPlansResponse : ResponseBase<List<TrainingPlatform.ApplicationServices.API.Domain.Models.Plan>>
+    public class GetPlansResponse : ResponseBase<List<Plan>>
     {
     }
 }

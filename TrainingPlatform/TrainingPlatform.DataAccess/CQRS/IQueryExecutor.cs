@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TrainingPlatform.DataAccess.CQRS.Queries;
 
-namespace TrainingPlatform.DataAccess
+namespace TrainingPlatform.DataAccess.CQRS
 {
     public interface IQueryExecutor
     {

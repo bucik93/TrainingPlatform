@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TrainingPlatform.ApplicationServices.API.Domain;
 using TrainingPlatform.DataAccess;
+using TrainingPlatform.DataAccess.CQRS;
 using TrainingPlatform.DataAccess.CQRS.Queries;
 using TrainingPlatform.DataAccess.Entities;
 
