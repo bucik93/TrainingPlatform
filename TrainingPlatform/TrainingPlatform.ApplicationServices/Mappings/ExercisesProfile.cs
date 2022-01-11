@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrainingPlatform.ApplicationServices.API.Domain;
 using TrainingPlatform.ApplicationServices.API.Domain.Models;
 
 namespace TrainingPlatform.ApplicationServices.Mappings
@@ -19,7 +20,13 @@ namespace TrainingPlatform.ApplicationServices.Mappings
                  .ForMember(x => x.Series, y => y.MapFrom(z => z.Series))
                  .ForMember(x => x.Repeat, y => y.MapFrom(z => z.Repeat))
                  .ForMember(x => x.Weight, y => y.MapFrom(z => z.Weight));
-               
+
+            this.CreateMap<AddExerciseRequest, DataAccess.Entities.Exercise>()
+                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
+                 .ForMember(x => x.Link, y => y.MapFrom(z => z.Link))
+                 .ForMember(x => x.Series, y => y.MapFrom(z => z.Series))
+                 .ForMember(x => x.Repeat, y => y.MapFrom(z => z.Repeat))
+                 .ForMember(x => x.Weight, y => y.MapFrom(z => z.Weight));
         }
     }
 }
