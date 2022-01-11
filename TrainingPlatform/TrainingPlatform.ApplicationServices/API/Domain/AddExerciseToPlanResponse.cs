@@ -1,5 +1,4 @@
-﻿using MediatR;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +7,7 @@ using TrainingPlatform.ApplicationServices.API.Domain.Models;
 
 namespace TrainingPlatform.ApplicationServices.API.Domain
 {
-    public class UpdatePlanRequest : IRequest<UpdatePlanResponse>
+    public class AddExerciseToPlanResponse :ResponseBase<ExercisePlan>
     {
-        public int PlanId;
-        public string Name { get; set; }
-        public IList<ExercisePlan> ExercisePlans;
-
     }
 }

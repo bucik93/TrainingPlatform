@@ -8,11 +8,10 @@ using TrainingPlatform.ApplicationServices.API.Domain.Models;
 
 namespace TrainingPlatform.ApplicationServices.API.Domain
 {
-    public class UpdatePlanRequest : IRequest<UpdatePlanResponse>
+    public class AddExerciseToPlanRequest :IRequest<AddExerciseToPlanResponse>
     {
-        public int PlanId;
-        public string Name { get; set; }
-        public IList<ExercisePlan> ExercisePlans;
-
+        public int PlanId { get; set; }
+        public int ExerciseId { get; set; }
+        //public Plan Plan { get; set; }
     }
 }

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainingPlatform.DataAccess;
 
 namespace TrainingPlatform.DataAccess.Migrations
 {
     [DbContext(typeof(TrainingPlatformContext))]
-    partial class TrainingPlatformContextModelSnapshot : ModelSnapshot
+    [Migration("20220111163039_AddManyToManyExercisePlan")]
+    partial class AddManyToManyExercisePlan
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,7 +194,7 @@ namespace TrainingPlatform.DataAccess.Migrations
 
                     b.HasOne("TrainingPlatform.DataAccess.Entities.Plan", "Plan")
                         .WithMany("ExercisePlans")
-                        .HasForeignKey("PlanId")
+                        .HasForeignKey("ExerciseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

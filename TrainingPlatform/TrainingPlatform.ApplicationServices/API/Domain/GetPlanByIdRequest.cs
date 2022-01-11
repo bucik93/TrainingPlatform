@@ -11,6 +11,6 @@ namespace TrainingPlatform.ApplicationServices.API.Domain
     public class GetPlanByIdRequest :IRequest<GetPlanByIdResponse>
     {
         public int PlanId { get; set; }
-        IEnumerable<Exercise> Exercises { get; set; }
+        public IEnumerable<Exercise> Exercises { get; set; }
     }
 }

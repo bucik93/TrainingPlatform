@@ -22,14 +22,14 @@ namespace TrainingPlatform.ApplicationServices.Mappings
                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name));
 
             this.CreateMap<RemovePlanRequest, Plan>()
-            .ForMember(x => x.Id, y => y.MapFrom(z => z.PlanId));
+                 .ForMember(x => x.Id, y => y.MapFrom(z => z.PlanId));
 
             this.CreateMap<Plan, API.Domain.Models.Plan>()
                 .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
-                .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
-                .ForMember(x => x.Exercises, y => y.MapFrom(z => z.Exercises));
-           
-   
+                .ForMember(x => x.Exercises, y => y.MapFrom(z => z.ExercisePlans.Select(x=>x.Exercise).ToList()))
+                .ForMember(x => x.Name, y => y.MapFrom(z => z.Name));
+
+
         }
     }
 }

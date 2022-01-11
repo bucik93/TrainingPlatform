@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace TrainingPlatform.ApplicationServices.API.Domain.Models
 {
-    public class Plan
+    public class ExercisePlan
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public List<Exercise> Exercises { get; set; }
+        public int PlanId { get; set; }
+        public int ExerciseId { get; set; }
+        public Plan Plan { get; set; }
+        public Exercise Exercise { get; set; }
     }
 }

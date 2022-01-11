@@ -17,7 +17,10 @@ namespace TrainingPlatform.DataAccess.Entities
         public int Series { get; set; }
         public int Repeat { get; set; }
         public int Weight { get; set; }
-        public ICollection<Plan> Plans { get; set; }
+
+        public ICollection<ExercisePlan> ExercisePlans { get; set; }
+
+
     }
 }
 

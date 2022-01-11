@@ -62,5 +62,18 @@ namespace TrainingPlatform.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
+        [HttpPost]
+        [Route("{planId}/{exerciseId}")]
+        public async Task<IActionResult> AddExerciseToPlan([FromRoute] int planId, [FromRoute] int exerciseId)
+        {
+            var request = new AddExerciseToPlanRequest()
+            {
+                PlanId = planId,
+                ExerciseId = exerciseId
+            };
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }

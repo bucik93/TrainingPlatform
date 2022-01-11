@@ -13,8 +13,8 @@ namespace TrainingPlatform.DataAccess.CQRS.Queries
         public int Id { get; set; }
         public override async Task<Plan> Execute(TrainingPlatformContext context)
         {
-            //var plan = await context.Plans.AsNoTracking().FirstOrDefaultAsync(x => x.Id == this.Id);
-            var plan = await context.Plans.Include(x=>x.Exercises).AsNoTracking().FirstOrDefaultAsync(x => x.Id == this.Id);
+            var plan = await context.Plans.Include(x => x.ExercisePlans).ThenInclude(x=>x.Exercise).AsNoTracking().FirstOrDefaultAsync(x => x.Id == this.Id);
+
             return plan;
 
         }
