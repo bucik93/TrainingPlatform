@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace TrainingPlatform.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PlansController : ControllerBase
     {
         private readonly IMediator mediator;
@@ -22,42 +22,51 @@ namespace TrainingPlatform.Controllers
         }
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllPlans([FromQuery] GetPlansRequest request)
+        public async Task<IActionResult> GetAllPlans()
         {
+            var request = new GetPlansRequest();
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
-
         [HttpGet]
-        [Route("{planId}")]
-        public async Task<IActionResult> GetById([FromRoute] int planId)
+        [Route("search-plan-with-exercises/{planName}")]
+        public async Task<IActionResult> Search([FromRoute] string planName)
         {
-            var request = new GetPlanByIdRequest() { PlanId = planId };
+            var request = new SearchPlanNameRequest() { Name = planName };
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+  
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
+        {
+            var request = new GetPlanByIdRequest() { PlanId = id };
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
 
         [HttpDelete]
-        [Route("{planId}")]
-        public async Task<IActionResult> Remove([FromRoute] int planId)
+        [Route("{id}")]
+        public async Task<IActionResult> Remove([FromRoute] int id)
         {
-            var request = new RemovePlanRequest() { PlanId = planId };
+            var request = new RemovePlanRequest() { PlanId = id };
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
         
         [HttpPut]
-        [Route("{planId}")]
-        public async Task<IActionResult> UpdatePlan([FromRoute] int planId,[FromQuery] UpdatePlanRequest request)
+        [Route("{id}")]
+        public async Task<IActionResult> UpdatePlan([FromRoute] int id, [FromQuery] UpdatePlanRequest request)
         {
-            request.PlanId = planId;
+            request.PlanId = id;
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddPlan([FromBody] AddPlanRequest request)
+        public async Task<IActionResult> AddPlan([FromQuery] AddPlanRequest request)
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);

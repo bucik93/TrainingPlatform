@@ -13,7 +13,8 @@ namespace TrainingPlatform.DataAccess.CQRS.Queries
         public string Name { get; set; }
         public override Task<List<Plan>> Execute(TrainingPlatformContext context)
         {               
-            return Name != null ? context.Plans.Where(x => x.Name == this.Name).ToListAsync() :  context.Plans.ToListAsync();
+            return Name != null ? context.Plans.Include(x => x.ExercisePlans).ThenInclude(x => x.Exercise).AsNoTracking().Where(x => x.Name == this.Name).ToListAsync() 
+                :  context.Plans.Include(x => x.ExercisePlans).ThenInclude(x => x.Exercise).AsNoTracking().ToListAsync();
         }
     }
 }

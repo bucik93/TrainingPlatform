@@ -7,31 +7,27 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TrainingPlatform.ApplicationServices.API.Domain;
-using TrainingPlatform.DataAccess;
 using TrainingPlatform.DataAccess.CQRS;
 using TrainingPlatform.DataAccess.CQRS.Queries;
-using TrainingPlatform.DataAccess.Entities;
 
 namespace TrainingPlatform.ApplicationServices.API.Handlers
 {
-    public class GetPlansHandler : IRequestHandler<GetPlansRequest, GetPlansResponse>
+    public class SearchPlanNameHandler : IRequestHandler<SearchPlanNameRequest, SearchPlanNameResponse>
     {
         private readonly IMapper mapper;
         private readonly IQueryExecutor queryExecutor;
 
-        public GetPlansHandler(IMapper mapper, IQueryExecutor queryExecutor)
+        public SearchPlanNameHandler(IMapper mapper, IQueryExecutor queryExecutor)
         {
             this.mapper = mapper;
             this.queryExecutor = queryExecutor;
         }
-        public async Task<GetPlansResponse> Handle(GetPlansRequest request, CancellationToken cancellationToken)
+        public async Task<SearchPlanNameResponse> Handle(SearchPlanNameRequest request, CancellationToken cancellationToken)
         {
-            //var query = new GetPlansQuery(){ Name = request.Name };
-            var query = new GetPlansQuery();
-
+            var query = new GetPlansQuery() { Name = request.Name };
             var plans = await this.queryExecutor.Execute(query);
             var mappedPlan = this.mapper.Map<List<Domain.Models.Plan>>(plans);
-            var response = new GetPlansResponse() { Data = mappedPlan };
+            var response = new SearchPlanNameResponse() { Data = mappedPlan };
             return response;
         }
     }
