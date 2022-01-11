@@ -10,7 +10,8 @@ namespace TrainingPlatform.ApplicationServices.API.Domain.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        IEnumerable<Exercise> Exercises { get; set; }
+        //IEnumerable<Exercise> Exercises { get; set; }
+        public ICollection<Exercise> Exercises { get; set; }
 
     }
 }
