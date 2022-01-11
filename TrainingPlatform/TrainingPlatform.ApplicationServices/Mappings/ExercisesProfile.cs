@@ -27,6 +27,9 @@ namespace TrainingPlatform.ApplicationServices.Mappings
                  .ForMember(x => x.Series, y => y.MapFrom(z => z.Series))
                  .ForMember(x => x.Repeat, y => y.MapFrom(z => z.Repeat))
                  .ForMember(x => x.Weight, y => y.MapFrom(z => z.Weight));
+            
+            this.CreateMap<RemoveExerciseRequest, Exercise>()
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.ExerciseId));
         }
     }
 }

@@ -44,5 +44,13 @@ namespace TrainingPlatform.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Remove([FromRoute] int id)
+        {
+            var request = new RemoveExerciseRequest() { ExerciseId = id };
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }
