@@ -52,5 +52,14 @@ namespace TrainingPlatform.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<IActionResult> UpdateExercise([FromRoute] int id, [FromQuery] UpdateExerciseRequest request)
+        {
+            request.ExerciseId = id;
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }
