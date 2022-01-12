@@ -16,6 +16,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TrainingPlatform.ApplicationServices.API.Domain;
 using TrainingPlatform.ApplicationServices.API.Validators;
+using TrainingPlatform.ApplicationServices.Components.OpenWeather;
 using TrainingPlatform.ApplicationServices.Mappings;
 using TrainingPlatform.DataAccess;
 using TrainingPlatform.DataAccess.CQRS;
@@ -43,6 +44,7 @@ namespace TrainingPlatform
 
             services.AddTransient<ICommandExecutor, CommandExecutor>();
             services.AddTransient<IQueryExecutor, QueryExecutor>();
+            services.AddTransient<IWeatherConnector, WeatherConnector>();
             services.AddAutoMapper(typeof(PlansProfile).Assembly);
             services.AddMediatR(typeof(ResponseBase<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

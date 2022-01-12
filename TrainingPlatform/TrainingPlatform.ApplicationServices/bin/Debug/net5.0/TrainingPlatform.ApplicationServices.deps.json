@@ -11,6 +11,7 @@
           "FluentValidation.AspNetCore": "10.3.6",
           "NLog": "4.7.13",
           "NLog.Web.AspNetCore": "4.14.0",
+          "RestSharp": "107.0.3",
           "TrainingPlatform.DataAccess": "1.0.0"
         },
         "runtime": {
@@ -426,6 +427,17 @@
           "lib/netcoreapp3.0/NLog.Web.AspNetCore.dll": {
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "4.14.0.2042"
+          }
+        }
+      },
+      "RestSharp/107.0.3": {
+        "dependencies": {
+          "System.Text.Json": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/RestSharp.dll": {
+            "assemblyVersion": "107.0.3.0",
+            "fileVersion": "107.0.3.0"
           }
         }
       },
@@ -938,6 +950,7 @@
           "System.Text.Encoding": "4.3.0"
         }
       },
+      "System.Text.Json/5.0.0": {},
       "System.Text.RegularExpressions/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -1324,6 +1337,13 @@
       "sha512": "sha512-5fTviEu/f+mIxucGHmcx1q/mtJGo8EZbxACD57H4iJPZbLaD0LsLxMB2xDCxDO9uexlnfMMDoryq1nFdrl/C6A==",
       "path": "nlog.web.aspnetcore/4.14.0",
       "hashPath": "nlog.web.aspnetcore.4.14.0.nupkg.sha512"
+    },
+    "RestSharp/107.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qeS4gRCiZfjBxQEhK21qkVA9T3oE4H+gn2hM3QtyXGNug7kTUoPd0VPIrnub4heNA2GhXE9ShdjJT61tF9gEcQ==",
+      "path": "restsharp/107.0.3",
+      "hashPath": "restsharp.107.0.3.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",
@@ -1723,6 +1743,13 @@
       "sha512": "sha512-YVMK0Bt/A43RmwizJoZ22ei2nmrhobgeiYwFzC4YAN+nue8RF6djXDMog0UCn+brerQoYVyaS+ghy9P/MUVcmw==",
       "path": "system.text.encoding.extensions/4.3.0",
       "hashPath": "system.text.encoding.extensions.4.3.0.nupkg.sha512"
+    },
+    "System.Text.Json/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+luxMQNZ2WqeffBU7Ml6njIvxc8169NW2oU+ygNudXQGZiarjE7DOtN7bILiQjTZjkmwwRZGTtLzmdrSI/Ustw==",
+      "path": "system.text.json/5.0.0",
+      "hashPath": "system.text.json.5.0.0.nupkg.sha512"
     },
     "System.Text.RegularExpressions/4.3.0": {
       "type": "package",
