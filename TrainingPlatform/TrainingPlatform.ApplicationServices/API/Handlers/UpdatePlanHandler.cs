@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TrainingPlatform.ApplicationServices.API.Domain;
+using TrainingPlatform.ApplicationServices.API.ErrorHandling;
 using TrainingPlatform.DataAccess.CQRS;
 using TrainingPlatform.DataAccess.CQRS.Commands;
 using TrainingPlatform.DataAccess.CQRS.Queries;
@@ -52,11 +53,13 @@ namespace TrainingPlatform.ApplicationServices.API.Handlers
             }
             else
             {
-                return null;
+                return new UpdatePlanResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
             }
         }
     }
-
 }
 
 

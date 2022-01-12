@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TrainingPlatform.ApplicationServices.API.Domain;
+using TrainingPlatform.ApplicationServices.API.ErrorHandling;
 using TrainingPlatform.DataAccess.CQRS;
 using TrainingPlatform.DataAccess.CQRS.Commands;
 using TrainingPlatform.DataAccess.CQRS.Queries;
@@ -26,7 +27,6 @@ namespace TrainingPlatform.ApplicationServices.API.Handlers
             this.commandExecutor = commandExecutor;
         }
       
-
         public async Task<RemovePlanResponse> Handle(RemovePlanRequest request, CancellationToken cancellationToken)
         {
             var query = new GetPlanQuery()
@@ -51,7 +51,10 @@ namespace TrainingPlatform.ApplicationServices.API.Handlers
             }
             else
             {
-                return null;
+                return new RemovePlanResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
             }
         }
     }

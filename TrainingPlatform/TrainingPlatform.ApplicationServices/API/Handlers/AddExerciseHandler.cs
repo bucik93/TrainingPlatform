@@ -31,8 +31,6 @@ namespace TrainingPlatform.ApplicationServices.API.Handlers
             {
                 Data = this.mapper.Map<Domain.Models.Exercise>(exerciseFromDb)
             };
-
-
         }
     }
 }

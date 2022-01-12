@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TrainingPlatform.ApplicationServices.API.Domain;
+using TrainingPlatform.ApplicationServices.API.ErrorHandling;
 using TrainingPlatform.DataAccess;
 using TrainingPlatform.DataAccess.CQRS;
 using TrainingPlatform.DataAccess.CQRS.Queries;
@@ -28,6 +29,13 @@ namespace TrainingPlatform.ApplicationServices.API.Handlers
         {
             var query = new GetExercisesQuery();
             var exercises = await this.queryExecutor.Execute(query);
+            if (exercises == null)
+            {
+                return new GetExercisesResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
             var mappedExercise = this.mapper.Map<List<Domain.Models.Exercise>>(exercises);
             var response = new GetExercisesResponse() { Data = mappedExercise };
             return response;

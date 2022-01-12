@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TrainingPlatform.ApplicationServices.API.Domain;
+using TrainingPlatform.ApplicationServices.API.ErrorHandling;
 using TrainingPlatform.DataAccess;
 using TrainingPlatform.DataAccess.CQRS;
 using TrainingPlatform.DataAccess.CQRS.Queries;
@@ -26,10 +27,15 @@ namespace TrainingPlatform.ApplicationServices.API.Handlers
         }
         public async Task<GetPlansResponse> Handle(GetPlansRequest request, CancellationToken cancellationToken)
         {
-            //var query = new GetPlansQuery(){ Name = request.Name };
             var query = new GetPlansQuery();
-
             var plans = await this.queryExecutor.Execute(query);
+            if (plans == null)
+            {
+                return new GetPlansResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
             var mappedPlan = this.mapper.Map<List<Domain.Models.Plan>>(plans);
             var response = new GetPlansResponse() { Data = mappedPlan };
             return response;
