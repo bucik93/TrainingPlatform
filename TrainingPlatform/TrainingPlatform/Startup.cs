@@ -35,8 +35,13 @@ namespace TrainingPlatform
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvcCore().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddPlanRequestValidator>());
-            services.AddTransient<ICommandExecutor, CommandExecutor>();
 
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
+            services.AddTransient<ICommandExecutor, CommandExecutor>();
             services.AddTransient<IQueryExecutor, QueryExecutor>();
             services.AddAutoMapper(typeof(PlansProfile).Assembly);
             services.AddMediatR(typeof(ResponseBase<>));

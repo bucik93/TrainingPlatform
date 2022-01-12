@@ -12,54 +12,49 @@ namespace TrainingPlatform.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ExercisesController : ControllerBase
+    public class ExercisesController : ApiControllerBase
     {
         private readonly IMediator mediator;
 
-        public ExercisesController(IMediator mediator)
+        public ExercisesController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
+
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllExercises([FromQuery] GetExercisesRequest request)
+        public Task<IActionResult> GetAllExercises([FromQuery] GetExercisesRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetExercisesRequest, GetExercisesResponse>(request);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddExercise([FromQuery] AddExerciseRequest request)
+        public Task<IActionResult> AddExercise([FromQuery] AddExerciseRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddExerciseRequest, AddExerciseResponse>(request);
         }
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] int id)
+        public Task<IActionResult> GetById([FromRoute] int id)
         {
             var request = new GetExerciseByIdRequest() { ExerciseId = id };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetExerciseByIdRequest, GetExerciseByIdResponse>(request);
         }
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> Remove([FromRoute] int id)
+        public Task<IActionResult> Remove([FromRoute] int id)
         {
             var request = new RemoveExerciseRequest() { ExerciseId = id };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<RemoveExerciseRequest, RemoveExerciseResponse>(request);
         }
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> UpdateExercise([FromRoute] int id, [FromQuery] UpdateExerciseRequest request)
+        public Task<IActionResult> UpdateExercise([FromRoute] int id, [FromQuery] UpdateExerciseRequest request)
         {
             request.ExerciseId = id;
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<UpdateExerciseRequest, UpdateExerciseResponse>(request);
         }
     }
 }
