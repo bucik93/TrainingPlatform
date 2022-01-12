@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainingPlatform.DataAccess;
 
 namespace TrainingPlatform.DataAccess.Migrations
 {
     [DbContext(typeof(TrainingPlatformContext))]
-    partial class TrainingPlatformContextModelSnapshot : ModelSnapshot
+    [Migration("20220112090522_AddExerciseMappingChange")]
+    partial class AddExerciseMappingChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,7 +66,7 @@ namespace TrainingPlatform.DataAccess.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("varchar(150)");
 
                     b.Property<int>("Repeat")
                         .HasColumnType("int");

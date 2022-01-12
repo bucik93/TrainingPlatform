@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TrainingPlatform.ApplicationServices.API.Domain;
+using TrainingPlatform.ApplicationServices.API.Validators;
 using TrainingPlatform.ApplicationServices.Mappings;
 using TrainingPlatform.DataAccess;
 using TrainingPlatform.DataAccess.CQRS;
@@ -32,6 +34,7 @@ namespace TrainingPlatform
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvcCore().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddPlanRequestValidator>());
             services.AddTransient<ICommandExecutor, CommandExecutor>();
 
             services.AddTransient<IQueryExecutor, QueryExecutor>();

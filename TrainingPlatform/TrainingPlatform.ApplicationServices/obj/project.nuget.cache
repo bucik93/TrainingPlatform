@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "HXspX5ltN3sA3wrXNgZbxUWVffDISbzDm3ct14BX/6wvDpxFHIEgiH+IAtqfDH2jYi6klrOcHRLcsaFRt4WKNA==",
+  "dgSpecHash": "fCkcbuN9fE2ENp7a8mYbxOVBJf7QbTnddOKR7+BRXjg9WH4zAopsZiEbJGF59KZmq9bmFIvPWR6eCzBb+RaD5g==",
   "success": true,
   "projectFilePath": "F:\\TrainingPlatform REPO GITHUB\\TrainingPlatform\\TrainingPlatform\\TrainingPlatform.ApplicationServices\\TrainingPlatform.ApplicationServices.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Piotr\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Piotr\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\Piotr\\.nuget\\packages\\fluentvalidation\\10.3.6\\fluentvalidation.10.3.6.nupkg.sha512",
+    "C:\\Users\\Piotr\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.6\\fluentvalidation.aspnetcore.10.3.6.nupkg.sha512",
+    "C:\\Users\\Piotr\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.6\\fluentvalidation.dependencyinjectionextensions.10.3.6.nupkg.sha512",
     "C:\\Users\\Piotr\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\Piotr\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "C:\\Users\\Piotr\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

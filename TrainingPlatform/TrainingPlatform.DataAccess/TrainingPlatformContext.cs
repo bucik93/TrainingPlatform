@@ -12,10 +12,9 @@ namespace TrainingPlatform.DataAccess
     {
         public TrainingPlatformContext(DbContextOptions<TrainingPlatformContext> opt) : base(opt)
         {
-
         }
-        public DbSet<ExercisePlan> ExercisePlans { get; set; }
 
+        public DbSet<ExercisePlan> ExercisePlans { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
         public DbSet<Plan> Plans { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -23,6 +22,8 @@ namespace TrainingPlatform.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(TrainingPlatformContext).Assembly);
+
             modelBuilder.Entity<ExercisePlan>()
                 .HasKey(bc => new { bc.PlanId, bc.ExerciseId });
             modelBuilder.Entity<ExercisePlan>()
@@ -34,6 +35,5 @@ namespace TrainingPlatform.DataAccess
                 .WithMany(c => c.ExercisePlans)
                 .HasForeignKey(bc => bc.ExerciseId);
         }
-
     }
 }
