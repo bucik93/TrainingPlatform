@@ -35,12 +35,12 @@ namespace TrainingPlatform.Controllers
             return this.HandleRequest<AddUserRequest, AddUserResponse>(request);
         }
 
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("authenticate")]
-        public Task<IActionResult> Post([FromBody] ValidateUserRequest request)
-        {
-            return this.HandleRequest<ValidateUserRequest, AddUserReValidateUserResponse>(request);
-        }
+        //[AllowAnonymous]
+        //[HttpPost]
+        //[Route("authenticate")]
+        //public Task<IActionResult> Post([FromBody] ValidateUserRequest request)
+        //{
+        //    return this.HandleRequest<ValidateUserRequest, AddUserReValidateUserResponse>(request);
+        //}
     }
 }
