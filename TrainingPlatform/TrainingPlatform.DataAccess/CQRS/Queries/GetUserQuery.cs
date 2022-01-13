@@ -13,7 +13,7 @@ namespace TrainingPlatform.DataAccess.CQRS.Queries
         public string UserName { get; set; }
         public override Task<User> Execute(TrainingPlatformContext context)
         {
-            return context.Users.FirstOrDefaultAsync(x => x.UserName == this.UserName);
+            return context.Users.FirstOrDefaultAsync(x => x.Username == this.UserName);
         }
     }
 }

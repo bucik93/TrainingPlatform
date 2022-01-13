@@ -8,11 +8,11 @@ namespace TrainingPlatform.DataAccess.Entities
 {
     public class User : EntityBase
     {
-        public int Id { get; set; }
+        public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public string HashedPassword { get; set; }
+        public string Salt { get; set; }
 
         public List<Role> Roles { get; set; }
         public List<Plan> Plans { get; set; }

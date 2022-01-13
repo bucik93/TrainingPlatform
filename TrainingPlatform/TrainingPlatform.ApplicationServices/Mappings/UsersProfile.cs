@@ -14,13 +14,14 @@ namespace TrainingPlatform.ApplicationServices.Mappings
         public UsersProfile()
         {
             this.CreateMap<AddUserRequest, User>()
-                           .ForMember(x => x.UserName, y => y.MapFrom(z => z.UserName))
+                           .ForMember(x => x.Username, y => y.MapFrom(z => z.UserName))
                            .ForMember(x => x.FirstName, y => y.MapFrom(z => z.FirstName))
+                           .ForMember(x => x.HashedPassword, y => y.MapFrom(z => z.Password))
                            .ForMember(x => x.LastName, y => y.MapFrom(z => z.LastName));
 
             this.CreateMap<User, API.Domain.Models.User>()
                            .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
-                           .ForMember(x => x.UserName, y => y.MapFrom(z => z.UserName))
+                           .ForMember(x => x.UserName, y => y.MapFrom(z => z.Username))
                            .ForMember(x => x.FirstName, y => y.MapFrom(z => z.FirstName))
                            .ForMember(x => x.LastName, y => y.MapFrom(z => z.LastName));
         }

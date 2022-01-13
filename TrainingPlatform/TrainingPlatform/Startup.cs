@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +19,7 @@ using System.Threading.Tasks;
 using TrainingPlatform.ApplicationServices.API.Domain;
 using TrainingPlatform.ApplicationServices.API.Validators;
 using TrainingPlatform.ApplicationServices.Components.OpenWeather;
+using TrainingPlatform.ApplicationServices.Components.PasswordHasher;
 using TrainingPlatform.ApplicationServices.Mappings;
 using TrainingPlatform.Authentication;
 using TrainingPlatform.DataAccess;
@@ -47,6 +49,7 @@ namespace TrainingPlatform
             });
 
             services.AddMvcCore().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddPlanRequestValidator>());
+            services.AddTransient<IPasswordHasher, PasswordHasher>();
             services.AddTransient<ICommandExecutor, CommandExecutor>();
             services.AddTransient<IQueryExecutor, QueryExecutor>();
             services.AddTransient<IWeatherConnector, WeatherConnector>();

@@ -23,7 +23,6 @@ namespace TrainingPlatform.Controllers
         [Route("")]
         public Task<IActionResult> GetAll([FromQuery] GetUsersRequest request)
         {
-            //var request = new GetUsersRequest();
             return this.HandleRequest<GetUsersRequest, GetUsersResponse>(request);
         }
 
@@ -35,12 +34,12 @@ namespace TrainingPlatform.Controllers
             return this.HandleRequest<AddUserRequest, AddUserResponse>(request);
         }
 
-        //[AllowAnonymous]
-        //[HttpPost]
-        //[Route("authenticate")]
-        //public Task<IActionResult> Post([FromBody] ValidateUserRequest request)
-        //{
-        //    return this.HandleRequest<ValidateUserRequest, AddUserReValidateUserResponse>(request);
-        //}
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("authenticate")]
+        public async Task<IActionResult> ValidateUser([FromBody] ValidateUserRequest request)
+        {
+            return await this.HandleRequest<ValidateUserRequest, ValidateUserResponse>(request);
+        }
     }
 }

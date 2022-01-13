@@ -13,22 +13,27 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TrainingPlatform.ApplicationServices.ExtensionMethods;
+using TrainingPlatform.ApplicationServices.Components.PasswordHasher;
 
 namespace TrainingPlatform.Authentication
 {
     public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
         private readonly IQueryExecutor queryExecutor;
+        private readonly IPasswordHasher passwordHasher;
+
 
         public BasicAuthenticationHandler(
             IOptionsMonitor<AuthenticationSchemeOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
             ISystemClock clock,
-            IQueryExecutor queryExecutor)
+            IQueryExecutor queryExecutor, 
+            IPasswordHasher passwordHasher)
             : base(options, logger, encoder, clock)
         {
             this.queryExecutor = queryExecutor;
+            this.passwordHasher = passwordHasher;
         }
 
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
@@ -59,9 +64,10 @@ namespace TrainingPlatform.Authentication
                 };
                 user = await this.queryExecutor.Execute(query);
 
-                var encodePassword =  ExtensionMethods.EncodeBase64(password);
-                              
-                if (user == null || user.Password != encodePassword)
+                var hashedPassword = this.passwordHasher.HashPassword(password, user.Salt).Result;
+                var isPasswordConfirmed = this.passwordHasher.IsPasswordConfirmed(user.HashedPassword, hashedPassword).Result;
+
+                if (user == null || !isPasswordConfirmed)
                 {
                     return AuthenticateResult.Fail("Invalid Authorization Header");
                 }
@@ -73,7 +79,7 @@ namespace TrainingPlatform.Authentication
 
             var claims = new[] {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Name, user.Username),
             };
             var identity = new ClaimsIdentity(claims, Scheme.Name);
             var principal = new ClaimsPrincipal(identity);
