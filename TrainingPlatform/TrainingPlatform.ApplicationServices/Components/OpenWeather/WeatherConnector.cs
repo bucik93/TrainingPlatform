@@ -15,6 +15,8 @@ namespace TrainingPlatform.ApplicationServices.Components.OpenWeather
     {
         private readonly RestClient restClient;
         private readonly string baseUrl = "https://api.openweathermap.org/";
+
+        //TO DO: fetch from file ApiKey.json
         private readonly string apiKey = "e3cbb82c60e2bc0d1d512d42faa943b6";
         public WeatherConnector()
         {

@@ -4,18 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrainingPlatform.DataAccess.Entities
+namespace TrainingPlatform.ApplicationServices.API.Domain.Models
 {
-    public class User : EntityBase
+    public class User
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-
-        public List<Role> Roles { get; set; }
-        public List<Plan> Plans { get; set; }
-
     }
 }
