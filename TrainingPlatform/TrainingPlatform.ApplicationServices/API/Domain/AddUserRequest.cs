@@ -1,17 +1,17 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrainingPlatform.ApplicationServices.API.Domain.Models
+namespace TrainingPlatform.ApplicationServices.API.Domain
 {
-    public class User
+    public class AddUserRequest : IRequest<AddUserResponse>
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
-        public string Password;
+        public string Password { get; set; }
     }
 }
