@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 namespace TrainingPlatform.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/exercises")]
     public class ExercisesController : ApiControllerBase
     {
         private readonly IMediator mediator;

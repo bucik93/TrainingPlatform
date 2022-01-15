@@ -11,7 +11,7 @@ namespace TrainingPlatform.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/users")]
     public class UsersController : ApiControllerBase
     {
         private readonly IMediator mediator;

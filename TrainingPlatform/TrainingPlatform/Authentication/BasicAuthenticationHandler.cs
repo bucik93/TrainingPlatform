@@ -64,13 +64,22 @@ namespace TrainingPlatform.Authentication
                 };
                 user = await this.queryExecutor.Execute(query);
 
-                var hashedPassword = this.passwordHasher.HashPassword(password, user.Salt).Result;
-                var isPasswordConfirmed = this.passwordHasher.IsPasswordConfirmed(user.HashedPassword, hashedPassword).Result;
-
-                if (user == null || !isPasswordConfirmed)
+                if(user!=null)
+                {
+                    var hashedPassword = this.passwordHasher.HashPassword(password, user.Salt).Result;
+                    var isPasswordConfirmed = this.passwordHasher.IsPasswordConfirmed(user.HashedPassword, hashedPassword).Result;
+                    if (user == null || !isPasswordConfirmed)
+                    {
+                        return AuthenticateResult.Fail("Invalid Authorization Header");
+                    }
+                }
+                else
                 {
                     return AuthenticateResult.Fail("Invalid Authorization Header");
+
                 }
+
+
             }
             catch
             {

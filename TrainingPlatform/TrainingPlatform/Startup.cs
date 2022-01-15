@@ -33,6 +33,7 @@ namespace TrainingPlatform
         {
             Configuration = configuration;
         }
+        readonly string MyAllowSpecificOrigins = "Politicy";
 
         public IConfiguration Configuration { get; }
 
@@ -42,7 +43,20 @@ namespace TrainingPlatform
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                    buldier =>
+                    {
+                        buldier
+                       //.WithOrigins("https://hotellinenmanagement.azurewebsites.net")
+                       .AllowAnyOrigin()
+                       .AllowAnyHeader()
+                       .AllowAnyMethod();
+                    });
 
+
+            });
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.SuppressModelStateInvalidFilter = true;
@@ -80,6 +94,7 @@ namespace TrainingPlatform
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthentication();
             app.UseAuthorization();
