@@ -9,8 +9,10 @@ namespace TrainingPlatform.DataAccess.Entities
     public class Plan : EntityBase
     {
         public string Name { get; set; }
-        public List<User> Users { get; set; }
+        //public List<User> Users { get; set; }
         public IList<ExercisePlan> ExercisePlans;
+        public ICollection<PlanUser> PlanUsers { get; set; }
+
 
     }
 }

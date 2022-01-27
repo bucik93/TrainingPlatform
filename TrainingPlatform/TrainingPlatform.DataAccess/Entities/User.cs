@@ -15,7 +15,9 @@ namespace TrainingPlatform.DataAccess.Entities
         public string Salt { get; set; }
 
         public List<Role> Roles { get; set; }
-        public List<Plan> Plans { get; set; }
+        //public List<Plan> Plans { get; set; }
+        public ICollection<PlanUser> PlanUsers { get; set; }
+
 
     }
 }
