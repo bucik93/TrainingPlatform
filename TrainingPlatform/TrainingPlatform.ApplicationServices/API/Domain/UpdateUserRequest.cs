@@ -1,21 +1,20 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrainingPlatform.ApplicationServices.API.Domain.Models
+namespace TrainingPlatform.ApplicationServices.API.Domain
 {
-    public class User
+    public class UpdateUserRequest : IRequest<UpdateUserResponse>
     {
-        public int Id { get; set; }
+        public int Id;
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
-        public string HashedPassword { get; set; }
-        public string Salt { get; set; }
-
-
+        public string HashedPassword;
+        public string Salt;
 
     }
 }
