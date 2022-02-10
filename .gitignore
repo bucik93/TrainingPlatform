@@ -1,7 +1,7 @@
-TrainingPlatform/TrainingPlatform/bin/
-TrainingPlatform/TrainingPlatform/obj/
-TrainingPlatform/TrainingPlatform/TrainingPlatform.ApplicationServices/obj/
-TrainingPlatform/TrainingPlatform/TrainingPlatform.ApplicationServices/bin/Debug/net5.0/
-TrainingPlatform/TrainingPlatform/DataAccess.ApplicationServices/obj/
-TrainingPlatform/TrainingPlatform/DataAccess.ApplicationServices/bin/Debug/net5.0/
+TrainingPlatform/TrainingPlatform/bin
+TrainingPlatform/TrainingPlatform/obj
+TrainingPlatform/TrainingPlatform/TrainingPlatform.ApplicationServices/obj
+TrainingPlatform/TrainingPlatform/TrainingPlatform.ApplicationServices/bin
+TrainingPlatform/TrainingPlatform/DataAccess.ApplicationServices/obj
+TrainingPlatform/TrainingPlatform/DataAccess.ApplicationServices/bin
 TrainingPlatform/.vs/
