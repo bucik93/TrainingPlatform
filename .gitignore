@@ -2,6 +2,6 @@ TrainingPlatform/TrainingPlatform/bin
 TrainingPlatform/TrainingPlatform/obj
 TrainingPlatform/TrainingPlatform/TrainingPlatform.ApplicationServices/obj/Debug/net5.0
 TrainingPlatform/TrainingPlatform/TrainingPlatform.ApplicationServices/bin
-TrainingPlatform/TrainingPlatform/DataAccess.ApplicationServices/obj/Debug/net5.0
-TrainingPlatform/TrainingPlatform/DataAccess.ApplicationServices/bin
+TrainingPlatform/TrainingPlatform/DataAccess/obj/Debug/net5.0
+TrainingPlatform/TrainingPlatform/DataAccess/bin
 TrainingPlatform/.vs/
